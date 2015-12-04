@@ -1,17 +1,24 @@
 ////////////////////////////////////////////////////////////////
 // CONTROLLERS
 ////////////////////////////////////////////////////////////////
-myApp.controller('homeController', ['$scope', 'cityService', function($scope, cityService){
+myApp.controller('homeController', ['$scope', '$location', 'cityService', function($scope, $location, cityService){
     $scope.city = cityService.city;
     $scope.day = cityService.day;
+    $scope.submit = function() {
+        
+    };
     
     $scope.$watch('city', function() {
         cityService.city = $scope.city;
-    })
+    });
     
     $scope.$watch('day', function() {
         cityService.day = $scope.day;
-    })
+    });
+    
+    $scope.submit = function() {
+        $location.path("/forecast");
+    };
     
 }]);
 
